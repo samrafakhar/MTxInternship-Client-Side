@@ -1,0 +1,115 @@
+.hyperlink {
+    color: #389583;
+    cursor: pointer;
+}
+
+.container {
+    color: #053868;
+}
+
+.open {
+    cursor: pointer;
+}
+
+.logo {
+    padding: 15px 20px;
+}
+
+.heading {
+    font-weight: 500;
+}
+
+.logout {
+    float: right;
+    padding-top: 15px;
+}
+
+thead th {
+    background-color: #053868;
+    color: white;
+    font-family: sans-serif;
+    font-size: small;
+}
+
+a:hover span {
+    display: block;
+    text-align: center;
+}
+
+.title {
+    margin: 15px 0px 15px 200px;
+    font-size: large;
+    margin-left: 215px;
+    color: #053868;
+    font-weight: 500;
+}
+
+div.containerc {
+    color: #389583;
+    font-size: large;
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+div.containerc p {
+    margin: 0
+}
+
+.newAcc {
+    font-size: large;
+    float: right;
+    color: #389583;
+    margin-right: 210px;
+}
+
+svg:hover {
+    fill: #389583;
+}
+
+.plus {
+    margin-bottom: 40px;
+}
+
+ul {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 200px;
+    right: 0;
+}
+
+.dropdown-content a {
+    width: 200px;
+    color: #389583;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #053868;
+    color: white
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}

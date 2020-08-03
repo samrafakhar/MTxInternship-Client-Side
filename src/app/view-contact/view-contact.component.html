@@ -1,0 +1,32 @@
+<div class="logo"><img src="assets/logo.png" />
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "logout()"><img src="assets/person-circle.svg" width="30" height="30" /></button>
+</div>
+
+<div class="nav">
+<div class="navText">Account Details</div>
+</div>
+
+<div class="container">
+<div class="details">Contact Details
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "editContact(contact.contactID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
+</div>
+<hr/>
+<div class="form-row"><div class="col-6 col-sm-3"> First Name:</div><div class="col-6 col-sm-3">{{contact.firstName}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Last Name:</div><div class="col-6 col-sm-3">{{contact.lastName}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Title:</div><div class="col-6 col-sm-3">{{contact.title}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Email</div><div class="col-6 col-sm-3">{{contact.email}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Contact Number:</div><div class="col-6 col-sm-3">{{contact.phone}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Functional Area:</div><div class="col-6 col-sm-3">{{contact.functionalArea}}</div></div>
+<div *ngIf="contact.functionalArea.includes('Sales') || contact.functionalArea.includes('Buyer')">
+<div class="form-row"><div class="col-6 col-sm-3"> Buys/Sells For:</div><div class="col-6 col-sm-3">{{contact.tradesFor}}</div></div>
+</div>
+<br/>
+<div class="details"> Address Details</div><hr/>
+<div class="form-row"><div class="col-6 col-sm-3"> Street1:</div><div class="col-6 col-sm-3">{{contact.address.street1}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Street2:</div><div class="col-6 col-sm-3">{{contact.address.street2}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> City:</div><div class="col-6 col-sm-3">{{contact.address.city}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> State:</div><div class="col-6 col-sm-3">{{contact.address.state}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Country:</div><div class="col-6 col-sm-3">{{contact.address.country}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Zip Code:</div><div class="col-6 col-sm-3">{{contact.address.zip}}</div></div>
+<br/>
+</div>

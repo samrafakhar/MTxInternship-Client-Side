@@ -1,0 +1,114 @@
+<app-user-managment></app-user-managment>
+<div class="nav">
+   <div class="navText"> New Contact</div>
+</div>
+<div class="container">
+   <form #addContactForm="ngForm" (ngSubmit)="addContact()">
+   <div class="details">Profile Details
+      <button [disabled]="addContactForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
+      <img src="assets/check-circle-g.svg" width="25" height="25" />
+      </button>
+   </div>
+   <hr/>
+   <div class="form-row">
+      <div class="col">
+         <div class="form-group">
+            <span class = "heading"><label for="firstName">First Name:</label></span>
+            <input required type="text" class="form-control input-sm" id="firstName"  name="firstName" [(ngModel)]="contact.firstName">
+         </div>
+      </div>
+      <div class="col">
+         <div class="form-group">
+            <span class = "heading"><label for="lastName">Last Name:</label></span>
+            <input required type="text" class="form-control input-sm" id="lastName"  name="lastName" [(ngModel)]="contact.lastName">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <span class = "heading"><label for="title">Title:</label></span>
+      <input required type="text" class="form-control input-sm" id="title"  name="title" [(ngModel)]="contact.title">
+   </div>
+   <div class="form-row">
+      <div class="col">
+         <div class="form-group">
+            <span class = "heading"><label for="email">Email</label></span>
+            <input required type="email" class="form-control input-sm" id="email"  name="email" [(ngModel)]="contact.email">
+         </div>
+      </div>
+      <div class="col">
+         <div class="form-group">
+            <span class = "heading"><label for="phone">Contact Number:</label></span>
+            <input required type="text" class="form-control input-sm" id="phone"  name="phone" [(ngModel)]="contact.phone">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <span class = "heading"><label for="functionalArea">Functional Area:</label></span>
+      <br/>
+      <ng-container *ngFor="let functionalArea of functionalAreas">
+         <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+            <input type="checkbox" [name]="functionalArea" ngModel (ngModelChange)="toggleSelectedFunctionalAreas(functionalArea)">&nbsp;&nbsp;{{functionalArea}}       
+         </div>
+         <textarea  style="display:none;"  name="test-o" [ngModel]="selectedFunctionalAreaString" [(ngModel)]="contact.functionalArea"></textarea>
+      </ng-container>
+   </div>
+   <br/>
+   <div *ngIf= "selectedFunctionalArea.includes('Buyer') || selectedFunctionalArea.includes('Sales')">
+      <br/><br/>
+      <div class="form-group">
+         <span class = "heading"><label for="tradesFor">Buys/Sells For:</label></span>
+         <br/>
+         <ng-container *ngFor="let tradesFor of tradesForList">
+            <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+               <input type="checkbox" [name]="tradesFor" ngModel (ngModelChange)="toggleSelectedTradesFor(tradesFor)">&nbsp;&nbsp;{{tradesFor}}       
+            </div>
+            <textarea  style="display:none;"  [ngModel]="selectedTradesForString" [(ngModel)]="contact.tradesFor"></textarea>
+         </ng-container>
+      </div>
+   </div>
+   <br/> <br/>
+   <div class="details" >Address Details</div>
+   <hr/>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="street1">Street 1:</label></span>
+            <input required type="text" class="form-control input-sm" id="street1"  name="street1" [(ngModel)]="contact.address.street1">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="street2">Street 2:</label></span>
+            <input required type="text" class="form-control input-sm" id="street2" name="street2" [(ngModel)]="contact.address.street2">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="city">City:</label></span>
+            <input required type="text" class="form-control input-sm" id="city"  name="city" [(ngModel)]="contact.address.city">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="zip">Zip Code:</label></span>
+            <input required type="text" class="form-control input-sm" id="zip"  name="zip" [(ngModel)]="contact.address.zip">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="state">State:</label></span>
+            <input required type="text" class="form-control input-sm" id="state"  name="state" [(ngModel)]="contact.address.state">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="country">Country:</label></span>
+            <input required type="text" class="form-control input-sm" id="country"  name="country" [(ngModel)]="contact.address.country">
+         </div>
+      </div>
+   </div>
+   <hr>
+   <button [disabled]="addContactForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
+   <img src="assets/check-circle-g.svg" width="25" height="25" />
+   </button>
+   </form>
+   <br/><br/><br/>
+</div>

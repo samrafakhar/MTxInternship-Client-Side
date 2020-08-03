@@ -1,0 +1,12 @@
+<div class="logo"><img src="assets/logo.png" />
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "logout()"><img src="assets/person-circle.svg" width="30" height="30" /></button>
+</div>
+
+<div class="nav">
+<div class="navText">Add New Account</div>
+</div>
+
+<div class="container">
+  <form #addAccountForm="ngForm" (ngSubmit)="addAccount()">
+  <small class="text-danger">{{msg}}</small>
+

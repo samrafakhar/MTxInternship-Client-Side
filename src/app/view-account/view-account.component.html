@@ -1,0 +1,53 @@
+<app-user-managment></app-user-managment>
+
+<div class="nav">
+<div class="navText">Account Details</div>
+</div>
+
+<!--<button type="button" (click)="editAccount(account.accountID)" class="btn btn-info">Edit</button>
+<br/>
+<button type="button" class="btn btn-success" (click) = "viewContacts()">Contacts</button>-->
+
+<!--<div *ngIf="account.type == 'vendor' || account.type == 'Vendor'">
+  <button type="button" (click)="cloneAccount(account.accountID)" class="btn btn-success">clone as customer account</button>
+</div>
+
+<div *ngIf="account.type =='customer' || account.type =='Customer'">
+  <button type="button" (click)="cloneAccount(account.accountID)" class="btn btn-success">clone as vendor account</button>
+</div>-->
+
+<div class="container">
+<div class="details">Business Details
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "viewContacts()"><img src="assets/people-g.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "editAccount(account.accountID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "cloneAccount(account.accountID)" ><img src="assets/link.svg" width="20" height="20" /></button>
+</div>
+<hr/>
+
+  <div class="form-row"><div class="col-6 col-sm-3">Name:</div><div class="col-6 col-sm-3">{{account.name}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">Type:</div><div class="col-6 col-sm-3">{{account.type}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">Status</div><div class="col-6 col-sm-3">{{account.status}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">Fax</div><div class="col-6 col-sm-3">{{account.fax}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">Website</div><div class="col-6 col-sm-3">{{account.website}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">ProductType</div><div class="col-6 col-sm-3">{{account.productType}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">ProteinType</div><div class="col-6 col-sm-3">{{account.proteinType}}</div></div>
+  <div class="form-row"><div class="col-6 col-sm-3">Business Type</div><div class="col-6 col-sm-3">{{account.businessType}}</div></div>
+
+<br/>
+<div class="details">Shipping Address Details</div><hr/>
+<div class="form-row"><div class="col-6 col-sm-3"> Street1: </div><div class="col-6 col-sm-3">{{account.shippingAddress.street1}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Street2: </div><div class="col-6 col-sm-3">{{account.shippingAddress.street2}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> City: </div><div class="col-6 col-sm-3">{{account.shippingAddress.city}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> State: </div><div class="col-6 col-sm-3">{{account.shippingAddress.state}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Country: </div><div class="col-6 col-sm-3">{{account.shippingAddress.country}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Zip Code: </div><div class="col-6 col-sm-3">{{account.shippingAddress.zip}}</div></div>
+<br/>
+<div class="details">Billing Address Details</div><hr/>
+<div class="form-row"><div class="col-6 col-sm-3"> Street1: </div><div class="col-6 col-sm-3">{{account.billingAddress.street1}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Street2: </div><div class="col-6 col-sm-3">{{account.billingAddress.street2}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> City: </div><div class="col-6 col-sm-3">{{account.billingAddress.city}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> State: </div><div class="col-6 col-sm-3">{{account.billingAddress.state}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Country: </div><div class="col-6 col-sm-3">{{account.billingAddress.country}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Zip Code: </div><div class="col-6 col-sm-3">{{account.billingAddress.zip}}</div></div>
+<br/>
+</div>

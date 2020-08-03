@@ -1,0 +1,194 @@
+<app-user-managment></app-user-managment>
+<div class="nav">
+   <div class="navText">Edit Account</div>
+</div>
+<div class="container">
+   <form #editAccountForm="ngForm" (ngSubmit)="editAccount()">
+   <div class="details">Business Profile
+      <button [disabled]="editAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
+   <img src="assets/check-circle-g.svg" width="25" height="25" />
+   </button></div>
+   <hr/>
+   <div class="form-group">
+      <span class = "heading"><label for="name"  id="blue">Name:</label></span> 
+      <input required type="text" class="form-control input-xs" id="name" value = {{account.name}} name="name" [(ngModel)]="account.name">
+   </div>
+
+
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <div class="row">
+               <div class="col">
+                  <span class = "heading"><label for="type" id="blue">Type: </label></span>
+               </div>
+               <div class="col"  *ngFor="let accountType of accountTypes" >
+               <input type="radio" name="accountType" [value]="accountType" [(ngModel)]="account.type"> {{accountType}}
+               </div>
+            </div>
+         </div>
+         <div class="col">
+             <div class="row">
+               <div class="col">
+                  <span class = "heading"><label for="status" id="blue">Status: </label></span>
+               </div>
+               <div class="col"  *ngFor="let statusType of statusTypes" >
+               <input type="radio" name="statusType" [value]="statusType" [(ngModel)]="account.status"> {{statusType}}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <span class = "heading"><label for="website">Website:</label></span>
+      <input required type="text" class="form-control input-sm" id="website" value = {{account.website}} name="website" [(ngModel)]="account.website">
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="fax">Fax:</label></span>
+            <input required type="text" class="form-control input-sm" id="fax" value = {{account.fax}} name="fax" [(ngModel)]="account.fax">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="phone">Contact Number:</label></span>
+            <input required type="text" class="form-control input-sm" id="phone"  name="phone" [(ngModel)]="account.phone">
+         </div>
+      </div>
+   </div>
+
+
+   <div class="form-group">
+   <span class = "heading"><label for="businessType">Business Type</label></span><br/>
+   <ng-container *ngFor="let business of businessTypes">
+      <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+      <input [checked]="account.businessType.includes(business)" type="checkbox" name="business" (change)="toggleSelectedBusiness(business, $event.target.checked)" >&nbsp;&nbsp;{{business}}    </div>
+      <textarea style="display:none;" name="test-o" [ngModel]="selectedBusinessString" [(ngModel)]="account.businessType"></textarea>
+   </ng-container>
+  </div>
+
+   <br/><br/><br/>
+   <div *ngIf="contains()">
+      <span class = "heading"><label for="productType">Product Type:</label></span><br/>
+         <ng-container *ngFor="let business of productList">
+            <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+            <input [checked]="account.productType.includes(business)" type="checkbox" name="business" (change)="toggleSelectedProducts(business, $event.target.checked)" >&nbsp;&nbsp;{{business}}    </div>
+            <textarea style="display:none;" name="testasdfgh" [ngModel]="selectedProductsString" [(ngModel)]="account.productType"></textarea>
+         </ng-container>
+      <br/><br/>
+      <div class="form-group">
+         <span class = "heading"><label for="proteinType">Protein Type:</label></span><br/>
+       
+         <div *ngIf="isSelected('Beef')">
+            <span class = "Details" style="font-weight: 500; float:left">Beef</span> <br/>
+            <ng-container *ngFor="let beef of beefList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+               <input [checked]="account.proteinType.includes(beef)" type="checkbox" name="beef" (change)="toggleSelectedProteins(beef, $event.target.checked)" >&nbsp;&nbsp;{{beef}}    </div>
+               <textarea style="display:none;" name="proteinType" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea> 
+            </ng-container>   
+            <br/>
+          </div>
+          <div *ngIf="isSelected('Poultary')">
+            <span class = "Details" style="font-weight: 500; float:left">Poultry</span> <br/>
+            <ng-container *ngFor="let poultry of poultryList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+               <input [checked]="account.proteinType.includes(poultry)" type="checkbox" name="poultry" (change)="toggleSelectedProteins(poultry, $event.target.checked)" >&nbsp;&nbsp;{{poultry}}    </div>             
+               <textarea style="display:none;" name="proteinType" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
+            </ng-container> 
+            <br/>
+          </div>
+          <div *ngIf="isSelected('Seafood')">
+            <span class = "Details" style="font-weight: 500; float:left">Seafood</span> <br/>
+            <ng-container *ngFor="let seafood of seafoodList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+               <input [checked]="account.proteinType.includes(seafood)" type="checkbox" name="seafood" (change)="toggleSelectedProteins(seafood, $event.target.checked)" >&nbsp;&nbsp;{{seafood}}    </div>            
+               <textarea style="display:none;" name="proteinType" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
+            </ng-container> 
+            <br/><br/>
+          </div>
+         
+         
+      </div>
+   </div>
+   <div class="details">Shipping Address Details</div>
+   <hr/>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="street1">Street 1:</label></span>
+            <input required type="text" class="form-control input-sm" id="street1" value = {{account.shippingAddress.street1}} name="street1" [(ngModel)]="account.shippingAddress.street1">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="street2">Street 2:</label></span>
+            <input required type="text" class="form-control input-sm" id="street2" value = {{account.shippingAddress.street2}} name="street2" [(ngModel)]="account.shippingAddress.street2">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="city">City:</label></span>
+            <input required type="text" class="form-control input-sm" id="city" value = {{account.shippingAddress.city}} name="city" [(ngModel)]="account.shippingAddress.city">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="zip">Zip Code:</label></span>
+            <input required type="text" class="form-control input-sm" id="zip" value = {{account.shippingAddress.zip}} name="zip" [(ngModel)]="account.shippingAddress.zip">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="state">State:</label></span>
+            <input required type="text" class="form-control input-sm" id="state" value = {{account.shippingAddress.state}} name="state" [(ngModel)]="account.shippingAddress.state">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="country">Country:</label></span>
+            <input required type="text" class="form-control input-sm" id="country" value = {{account.shippingAddress.country}} name="country" [(ngModel)]="account.shippingAddress.country">
+         </div>
+      </div>
+   </div>
+   <div class="details">Billing Address Details</div>
+   <hr/>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="street1">Street 1:</label></span>
+            <input required type="text" class="form-control input-sm" id="street1" value = {{account.billingAddress.street1}} name="street1" [(ngModel)]="account.billingAddress.street1">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="street2">Street 2:</label></span>
+            <input required type="text" class="form-control input-sm" id="street2" value = {{account.billingAddress.street2}} name="street2" [(ngModel)]="account.billingAddress.street2">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="city">City:</label></span>
+            <input required type="text" class="form-control input-sm" id="city" value = {{account.billingAddress.city}} name="city" [(ngModel)]="account.billingAddress.city">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="zip">Zip Code:</label></span>
+            <input required type="text" class="form-control input-sm" id="zip" value = {{account.billingAddress.zip}} name="zip" [(ngModel)]="account.billingAddress.zip">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="state">State:</label></span>
+            <input required type="text" class="form-control input-sm" id="state" value = {{account.billingAddress.state}} name="state" [(ngModel)]="account.billingAddress.state">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="country">Country:</label></span>
+            <input required type="text" class="form-control input-sm" id="country" value = {{account.billingAddress.country}} name="country" [(ngModel)]="account.billingAddress.country">
+         </div>
+      </div>
+   </div>
+   <hr>
+   <button [disabled]="editAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
+   <img src="assets/check-circle-g.svg" width="25" height="25" />
+   </button>
+   </form>
+   <br/><br/><br/>
+</div>

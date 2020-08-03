@@ -1,0 +1,209 @@
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+<app-user-managment></app-user-managment>
+<div class="nav">
+   <div class="navText">Add New Account</div>
+</div>
+<div class="container">
+   <form #addAccountForm="ngForm" (ngSubmit)="addAccount()">
+   <div class="details">Business Profile
+      <button [disabled]="addAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
+      <img src="assets/check-circle-g.svg" width="25" height="25" />
+      </button>
+   </div>
+   <hr/>
+   <div class="form-group">
+      <span class = "heading"><label for="name">Name</label></span>
+      <input required type="text" class="form-control input-sm" id="name"  name="name" [(ngModel)]="account.name">
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <div class="row">
+               <div class="col">
+                  <span class = "heading"><label for="type" id="blue">Type </label></span>
+               </div>
+               <div class="col"  *ngFor="let accountType of accountTypes" >
+                  <input type="radio" name="type" id="type" [value]="accountType" [(ngModel)]="account.type"> {{accountType}}
+               </div>
+            </div>
+         </div>
+         <div class="col">
+            <div class="row">
+               <div class="col">
+                  <span class = "heading"><label for="status" id="blue">Status </label></span>
+               </div>
+               <div class="col"  *ngFor="let statusType of statusTypes" >
+                  <input type="radio" name="status" id="status" [value]="statusType" [(ngModel)]="account.status"> {{statusType}}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <span class = "heading"><label for="website">Website</label></span>
+      <input required type="text" class="form-control input-sm" id="website"  name="website" [(ngModel)]="account.website">
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="fax">Fax:</label></span>
+            <input required type="text" class="form-control input-sm" id="fax" name="fax" [(ngModel)]="account.fax">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="phone">Contact Number:</label></span>
+            <input required type="text" class="form-control input-sm" id="phone" name="phone" [(ngModel)]="account.phone">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <span class = "heading"><label for="businessType">Business Type</label></span>
+      <br/>
+      <ng-container *ngFor="let business of businessTypes">
+         <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+            <input type="checkbox" [name]="business" ngModel (ngModelChange)="toggleSelectedBusiness(business)">&nbsp;&nbsp;{{business}}       
+         </div>
+         <textarea style="display:none;" name="test-o" [ngModel]="selectedBusinessString" [(ngModel)]="account.businessType"></textarea>
+      </ng-container>
+   </div>
+   <br/><br/><br/>
+   <div *ngIf="contains()">
+      <div class="form-group">
+         <span class = "heading"><label for="productType">Product Type:</label></span>
+         <div></div>
+         <ng-container *ngFor="let business of productList">
+            <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+              <input type="checkbox" [name]="business" ngModel (ngModelChange)="toggleSelectedProducts(business)">&nbsp;&nbsp;{{business}}       
+            </div>
+         </ng-container>
+         <textarea style="display:none;" name="test" [ngModel]="selectedProductsString" [(ngModel)]="account.productType"></textarea>
+      </div>
+      <br/>
+      <div class="form-group">
+         <span class = "heading"><label for="proteinType">Protein Type:</label></span>
+            <br/>
+          <div *ngIf="isSelected('Beef')">
+            <span class = "Details" style="font-weight: 500; float:left">Beef</span> <br/>
+            <ng-container *ngFor="let beef of beefList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+                  <input type="checkbox" [name]="beef" ngModel (ngModelChange)="toggleSelectedProteins(beef)">&nbsp;&nbsp;{{beef}}       
+               </div>
+            </ng-container>
+            <textarea style="display:none;" name="beef" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
+            <br/>
+          </div>
+          <div *ngIf="isSelected('Seafood')">
+            <span class = "Details" style="font-weight: 500; float:left">Seafood</span> <br/>
+            <ng-container *ngFor="let seafood of seafoodList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+                  <input type="checkbox" [name]="seafood" ngModel (ngModelChange)="toggleSelectedProteins(seafood)">&nbsp;&nbsp;{{seafood}}       
+               </div>
+            </ng-container>
+            <textarea style="display:none;" name="seafood" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
+            <br/><br>
+          </div>
+          <div *ngIf="isSelected('Poultary')">
+            <span class = "Details" style="font-weight: 500; float:left">Poultry</span> <br/>
+            <ng-container *ngFor="let poultry of poultryList">
+               <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
+                  <input type="checkbox" [name]="poultry" ngModel (ngModelChange)="toggleSelectedProteins(poultry)">&nbsp;&nbsp;{{poultry}}       
+               </div>
+            </ng-container>
+            <textarea style="display:none;" name="poultry" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
+            <br/>
+          </div>
+      </div>
+   </div>
+          <!--<input disabled required type="text" class="form-control input-sm" id="proteinType" name="proteinType" [(ngModel)]="account.proteinType">
+            <ng-multiselect-dropdown
+                [placeholder]="'custom placeholder'"
+                [data]="proteinList"
+                [(ngModel)]="selectedProteins"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>-->
+   <div class="details">Shipping Address Details</div>
+   <hr/>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="street1">Street 1:</label></span>
+            <input required type="text" class="form-control input-sm" id="street1" name="street1" [(ngModel)]="account.shippingAddress.street1">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="street2">Street 2:</label></span>
+            <input required type="text" class="form-control input-sm" id="street2"  name="street2" [(ngModel)]="account.shippingAddress.street2">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="city">City:</label></span>
+            <input required type="text" class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.shippingAddress.city">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="zip">Zip Code:</label></span>
+            <input required type="text" class="form-control input-sm" id="zip" name="zip" [(ngModel)]="account.shippingAddress.zip">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="state">State:</label></span>
+            <input required type="text" class="form-control input-sm" id="state" name="state" [(ngModel)]="account.shippingAddress.state">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="country">Country:</label></span>
+            <input required type="text" class="form-control input-sm" id="country" name="country" [(ngModel)]="account.shippingAddress.country">
+         </div>
+      </div>
+   </div>
+   <div class="details">Billing Address Details</div>
+   <hr/>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="street1">Street 1:</label></span>
+            <input required type="text" class="form-control input-sm" id="street1"  name="street1" [(ngModel)]="account.billingAddress.street1">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="street2">Street 2:</label></span>
+            <input required type="text" class="form-control input-sm" id="street2" name="street2" [(ngModel)]="account.billingAddress.street2">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="city">City:</label></span>
+            <input required type="text" class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.billingAddress.city">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="zip">Zip Code:</label></span>
+            <input required type="text" class="form-control input-sm" id="zip"  name="zip" [(ngModel)]="account.billingAddress.zip">
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="row">
+         <div class="col">
+            <span class = "heading"><label for="state">State:</label></span>
+            <input required type="text" class="form-control input-sm" id="state"  name="state" [(ngModel)]="account.billingAddress.state">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="country">Country:</label></span>
+            <input required type="text" class="form-control input-sm" id="country"  name="country" [(ngModel)]="account.billingAddress.country">
+         </div>
+      </div>
+   </div>
+   <hr>
+   <small class="text-danger">{{msg}}</small>
+   <button [disabled]="addAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right" ejs-button>
+   <img src="assets/check-circle-g.svg" width="25" height="25" />
+   </button>
+   </form>
+   <br/><br/><br/>
+</div>

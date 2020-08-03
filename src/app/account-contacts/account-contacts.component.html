@@ -1,0 +1,46 @@
+<app-user-managment></app-user-managment>
+
+<div class="title"> Account Contacts
+  <div class ="newAcc">&nbsp;
+  <button type="button" style="background-color:transparent; border-color:transparent;" (click)="createContact()">
+ <img src="assets/plus-circle-g.svg" width="25" height="25"/>
+ </button>
+    </div> 
+</div>
+
+<hr/>
+<div class="container"> 
+   <table class="table table-hover">
+   <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Title</th>
+        <th scope="col">Functional Area</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td class="hyperlink" (click)="viewContact(contact.contactID)">{{contact.firstName}} {{contact.lastName}}</td>
+            <td>{{contact.title}}</td>
+            <td>{{contact.functionalArea}}</td>
+            <td>{{contact.phone}}</td>
+            <td>
+              <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="editContact(contact.contactID)"> 
+                  <img src="assets/pencil-g.svg" width="15" height="15" />
+              </button>
+              &nbsp;&nbsp;
+              <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="deleteContact(contact.contactID)"> 
+                  <img src="assets/trash-g.svg" width="15" height="15"/>
+              </button>            </td>
+          </tr>
+    </tbody>
+  </table>
+        <div *ngIf="contacts.length===0">
+        <div class=containerc>
+          <p>Account does not have any contacts. Press <img src="assets/plus-circle-g.svg" width="15" height="15" /> icon to create a new contact.
+        </div>
+        </div>
+</div>

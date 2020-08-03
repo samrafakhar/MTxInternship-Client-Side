@@ -1,0 +1,70 @@
+div.containerc {
+    color: #389583;
+    font-size: large;
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+div.containerc p {
+    margin: 0
+}
+
+.open {
+    cursor: pointer;
+}
+
+.logo {
+    padding: 15px 20px;
+}
+
+.heading {
+    font-weight: 500;
+}
+
+.hyperlink {
+    color: #389583;
+    cursor: pointer;
+}
+
+.logout {
+    float: right;
+    padding-top: 15px;
+}
+
+thead th {
+    background-color: #053868;
+    color: white;
+    font-family: sans-serif;
+    font-size: small;
+}
+
+.title {
+    margin: 15px 0px 15px 200px;
+    font-size: large;
+    margin-left: 215px;
+    color: #053868;
+    font-weight: 500;
+}
+
+.newAcc {
+    font-size: large;
+    float: right;
+    color: #389583;
+    margin-right: 210px;
+}
+
+svg:hover {
+    fill: #389583;
+}
+
+.plus {
+    margin-bottom: 40px;
+}
+
+ul {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+}

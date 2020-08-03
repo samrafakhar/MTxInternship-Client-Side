@@ -1,0 +1,33 @@
+.nav {
+    background: #053868;
+    margin: 30px 0px;
+}
+
+.navText {
+    color: white;
+    float: center;
+    font-size: large;
+    padding: 5px;
+    margin-left: 200px;
+}
+
+.details {
+    font-size: large;
+    color: #389583;
+}
+
+.logo {
+    padding: 15px 20px;
+}
+
+.heading {
+    font-weight: 500;
+}
+
+.logout {
+    padding-top: 15px;
+}
+
+.container {
+    color: #053868;
+}
