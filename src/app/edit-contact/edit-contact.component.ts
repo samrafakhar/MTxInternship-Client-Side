@@ -61,7 +61,8 @@ export class EditContactComponent implements OnInit {
     console.log("now going to update");
     this._service.editContactFromRemote(this.contact).subscribe(
       data=>{
-        this._router.navigate(['/userAccounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
+        localStorage.setItem("flag",'1');
+        this._router.navigate(['/accounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
       },
       error=>{
         console.log("error")

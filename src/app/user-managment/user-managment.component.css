@@ -1,6 +1,10 @@
 .hyperlink {
-    color: #389583;
+    color: #2e8171;
     cursor: pointer;
+}
+
+.hyperlink:hover {
+    text-decoration: underline;
 }
 
 .container {
@@ -12,23 +16,34 @@
 }
 
 .logo {
-    padding: 15px 20px;
+    padding: 10px 0px 0px 7px;
 }
 
 .heading {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .logout {
     float: right;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 thead th {
     background-color: #053868;
     color: white;
     font-family: sans-serif;
-    font-size: small;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 a:hover span {
@@ -45,7 +60,7 @@ a:hover span {
 }
 
 div.containerc {
-    color: #389583;
+    color: #2e8171;
     font-size: large;
     height: 10em;
     display: flex;
@@ -60,12 +75,12 @@ div.containerc p {
 .newAcc {
     font-size: large;
     float: right;
-    color: #389583;
+    color: #2e8171;
     margin-right: 210px;
 }
 
 svg:hover {
-    fill: #389583;
+    fill: #2e8171;
 }
 
 .plus {
@@ -95,7 +110,7 @@ ul {
 
 .dropdown-content a {
     width: 200px;
-    color: #389583;
+    color: #2e8171;
     padding: 12px 16px;
     text-decoration: none;
     display: block;

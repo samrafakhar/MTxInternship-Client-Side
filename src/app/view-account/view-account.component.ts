@@ -37,7 +37,7 @@ export class ViewAccountComponent implements OnInit {
     this._service.cloneAccountFromRemote(this.account).subscribe(
       data=>{
         console.log("account cloned");
-        this._router.navigate(['/userAccounts']);
+        this._router.navigate(['/accounts']);
       },
       error=>{
         console.log("error")
@@ -48,10 +48,11 @@ export class ViewAccountComponent implements OnInit {
   editAccount(ID:string){
     localStorage.setItem('currentAccountID', ID);
     console.log("editAccount calleddd");
-    this._router.navigate(['/userAccounts/editAccount', ID]);
+    this._router.navigate(['/accounts/editAccount', ID]);
   }
 
-  viewContacts(){
-    this._router.navigate(['/userAccounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
+  viewContacts(ID:string){
+    localStorage.setItem('currentAccountName', ID);
+    this._router.navigate(['/accounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
   }
 }

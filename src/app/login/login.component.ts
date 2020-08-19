@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('currentUserFirstName',data.firstName);
         localStorage.setItem('currentUserLastName',data.lastName);
         console.log(localStorage.getItem('currentUserID'));
-        this._router.navigate(['userAccounts']);
+        this._router.navigate(['/accounts']);
       },
       error=>{
         console.log("error")

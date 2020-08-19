@@ -14,10 +14,13 @@ export class  Contact{
     functionalArea: string;
     address: Address;
     account:UserAccount;
+    account_accountID:string;
     tradesFor:String;
 
     constructor(add: Address, account:UserAccount){
         this.address=add;
         this.account=account;
     };
+
+    
 }

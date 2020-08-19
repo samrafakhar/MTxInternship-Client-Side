@@ -27,6 +27,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
+import { AllContactsComponent } from './all-contacts/all-contacts.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,12 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ProteinComponent,
     UserManagmentComponent,
     UpdateProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    SidebarComponent,
+    ViewUsersComponent,
+    AllContactsComponent,
+    NewUserComponent,
+    NavbarComponent,
   ],
   imports: [
     //NgbActiveModal,
@@ -58,6 +69,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     FormsModule,
     MatFormFieldModule,
     NgbModule,
+    InfiniteScrollModule,
     BrowserAnimationsModule
   ],
   providers: [],

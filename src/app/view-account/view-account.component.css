@@ -1,19 +1,38 @@
+* {
+    font-family: 'Quicksand';
+    font-size: 13px;
+}
+
 .nav {
     background: #053868;
-    margin: 30px 0px;
+    margin: 8px 0px 15px 0px;
+}
+
+.newAcc {
+    font-size: large;
+    float: right;
+    color: #2e8171;
+    margin-right: 210px;
+}
+
+.title {
+    margin: 15px 0px 15px 200px;
+    font-size: large;
+    margin-left: 215px;
+    color: #053868;
+    font-weight: 500;
 }
 
 .navText {
     color: white;
     float: center;
-    font-size: large;
+    font-size: medium;
     padding: 5px;
-    margin-left: 200px;
 }
 
 .details {
-    font-size: large;
-    color: #389583;
+    font-size: medium;
+    color: #2e8171;
 }
 
 .logo {
@@ -21,7 +40,7 @@
 }
 
 .heading {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .logout {

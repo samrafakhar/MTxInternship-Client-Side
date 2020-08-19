@@ -1,8 +1,5 @@
 <app-user-managment></app-user-managment>
 
-<div class="nav">
-<div class="navText">Account Details</div>
-</div>
 
 <!--<button type="button" (click)="editAccount(account.accountID)" class="btn btn-info">Edit</button>
 <br/>
@@ -17,10 +14,16 @@
 </div>-->
 
 <div class="container">
+<div class="nav">
+<div class="navText">Account Details</div>
+</div>
 <div class="details">Business Details
-<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "viewContacts()"><img src="assets/people-g.svg" width="20" height="20" /></button>
-<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "editAccount(account.accountID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
-<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "cloneAccount(account.accountID)" ><img src="assets/link.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right" (click) = "viewContacts(account.name)"><img src="assets/people-g.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right" (click) = "editAccount(account.accountID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right" (click) = "cloneAccount(account.accountID)" ><img src="assets/link.svg" width="20" height="20" /></button>
 </div>
 <hr/>
 
@@ -51,3 +54,4 @@
 <div class="form-row"><div class="col-6 col-sm-3"> Zip Code: </div><div class="col-6 col-sm-3">{{account.billingAddress.zip}}</div></div>
 <br/>
 </div>
+<app-sidebar></app-sidebar>

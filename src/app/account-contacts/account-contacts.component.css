@@ -1,5 +1,5 @@
 div.containerc {
-    color: #389583;
+    color: #2e8171;
     font-size: large;
     height: 10em;
     display: flex;
@@ -7,8 +7,43 @@ div.containerc {
     justify-content: center
 }
 
+body {
+    font-family: 'Quicksand';
+    font-size: small;
+    color: #383838;
+}
+
 div.containerc p {
     margin: 0
+}
+
+* {
+    font-family: 'Quicksand';
+    font-size: 13px;
+}
+
+.nav {
+    background: #053868;
+    margin: 8px 0px 15px 0px;
+}
+
+.navText {
+    color: white;
+    float: center;
+    font-size: medium;
+    padding: 5px;
+}
+
+.container {
+    max-width: 1450px;
+    margin-left: 40px;
+}
+
+tr {
+    line-height: 12px;
+    min-height: 12px;
+    height: 12px;
+    font-size: small;
 }
 
 .open {
@@ -20,12 +55,16 @@ div.containerc p {
 }
 
 .heading {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .hyperlink {
-    color: #389583;
+    color: #2e8171;
     cursor: pointer;
+}
+
+.hyperlink:hover {
+    text-decoration: underline;
 }
 
 .logout {
@@ -37,7 +76,18 @@ thead th {
     background-color: #053868;
     color: white;
     font-family: sans-serif;
-    font-size: small;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title {
@@ -51,12 +101,12 @@ thead th {
 .newAcc {
     font-size: large;
     float: right;
-    color: #389583;
+    color: #2e8171;
     margin-right: 210px;
 }
 
 svg:hover {
-    fill: #389583;
+    fill: #2e8171;
 }
 
 .plus {

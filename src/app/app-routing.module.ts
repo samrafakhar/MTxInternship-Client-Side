@@ -12,23 +12,32 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { AccountContactsComponent } from './account-contacts/account-contacts.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
+import { AllContactsComponent } from './all-contacts/all-contacts.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
   {path:'logout', component:LoginComponent},
+  {path:'users', component:ViewUsersComponent},
+  {path:'users/newUser', component:NewUserComponent},
+  {path:'contacts', component:AllContactsComponent},
   {path:'updateProfile', component:UpdateProfileComponent},
   {path:'changePassword', component:ChangePasswordComponent},
   {path:'register', component:RegistrationComponent},
-  {path:'userAccounts', component:UserAccountsComponent},
+  {path:'accounts', component:UserAccountsComponent},
   {path:'refreshUserAccounts', component:UserAccountsComponent},
-  {path:'userAccounts/editAccount/:ID', component:EditAccountComponent},
-  {path:'userAccounts/addAccount', component:AddAccountComponent},
-  {path:'userAccounts/viewAccount/:ID', component:ViewAccountComponent},
-  {path:'userAccounts/viewAccount/:ID/accountContacts', component:AccountContactsComponent},
-  {path:'userAccounts/viewAccount/:ID/accountContacts/editContact/:ID', component:EditContactComponent},
-  {path:'userAccounts/viewAccount/:ID/accountContacts/viewContact/:ID', component:ViewContactComponent},
-  {path:'userAccounts/viewAccount/:ID/accountContacts/addContact', component:AddContactComponent},
+  {path:'accounts/editAccount/:ID', component:EditAccountComponent},
+  {path:'accounts/addAccount', component:AddAccountComponent},
+  {path:'accounts/viewAccount/:ID', component:ViewAccountComponent},
+  {path:'accounts/viewAccount/:ID/accountContacts', component:AccountContactsComponent},
+  {path:'accounts/viewAccount/:ID/accountContacts/editContact/:ID', component:EditContactComponent},
+  {path:'accounts/viewAccount/:ID/accountContacts/viewContact/:ID', component:ViewContactComponent},
+  {path:'accounts/viewAccount/:ID/accountContacts/addContact', component:AddContactComponent},
+  {path:'contacts/:ID/accountContacts/addContact', component:AddContactComponent},
+  {path:'contacts/editContact/:ID', component:EditContactComponent},
+  {path:'contacts/viewContact/:ID', component:ViewContactComponent},
 ];
 
 @NgModule({

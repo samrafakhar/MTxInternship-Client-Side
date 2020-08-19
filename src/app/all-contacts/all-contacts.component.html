@@ -1,0 +1,101 @@
+
+<app-user-managment></app-user-managment>
+
+
+<ng-template #content let-modal>
+   <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Search Account</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      <form>
+         <div class="form-group">
+            
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0">
+               <thead class="thead-light" style="font-weight:light;">
+                  <tr>
+                     <th scope="col" >Account Name</th>
+                     <th scope="col"> Select </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let account of accounts" >
+                     <td scope="row" class="hyperlink" (click)="viewAccount(account.accountID)">{{account.name}}</td>
+                     <td>
+                        <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="modal.close('Save click'); createContact(account.accountID)"> 
+                        <img src="assets/check2.svg" width="15" height="15"/>
+                        </button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            </div>
+            
+         </div>
+      </form>
+   </div>
+</ng-template>
+<!--<div class="nav">
+   <div class="navText">Search Contacts</div>
+</div>-->
+
+<div class="container">
+<button type="button" style="margin-right:200px; font-size: medium; color: #053868; background-color:transparent; border-color:transparent; float:left;">
+      <img src="assets/person-fill-b.svg" width="20" height="20"/>&nbsp;Search Contacts
+</button>
+      <input class="center-block" id="ss" type="text" (keyup)="searchBox()" (keydown)="searchBox()" placeholder="Search in contacts" [(ngModel)]="searchS">
+      <button type="button" style="background-color:transparent; border-color:transparent; float:right; color:#2e8171;" (click)="open(content)">
+      New Contact&nbsp;<img src="assets/plus.svg" width="25" height="25"/>
+      </button>
+   <br/>
+   <div class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      (scrolled)="onScrollDown()">
+   <table class="table table-hover">
+      <thead class="thead-light">
+         <tr>
+            <th scope="col">Contact Name</th>
+            <th scope="col">Account Name</th>
+            <th scope="col">Title</th>
+            <th scope="col">Functional Area</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let contact of contacts">
+            <td class="hyperlink" (click)="viewContact(contact.contactID)">{{contact.firstName}} {{contact.lastName}}</td>
+            <td class="hyperlink" (click)="viewAccount(contact.account.accountID)">{{contact.account.name}}</td>
+            <td>{{contact.title}}</td>
+            <td>{{contact.functionalArea}}</td>
+            <td>{{contact.phone}}</td>
+            <td>{{contact.email}}</td>
+            
+            <td>
+               <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="editContact(contact.contactID)"> 
+               <img src="assets/pencil-g.svg" width="15" height="15" />
+               </button>
+               &nbsp;&nbsp;
+               <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="deleteContact(contact.contactID)"> 
+               <img src="assets/trash-g.svg" width="15" height="15"/>
+               </button>            
+            </td>
+         </tr>
+      </tbody>
+   </table>
+   </div>
+   <div *ngIf="contacts.length===0">
+      <div class=containerc>
+         <p>Account does not have any contacts. Press <img src="assets/plus.svg" width="15" height="15" /> icon to create a new contact.
+      </div>
+   </div>
+</div>
+<!-- Modal -->
+<app-sidebar></app-sidebar>

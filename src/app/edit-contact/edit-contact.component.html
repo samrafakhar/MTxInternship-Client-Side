@@ -1,12 +1,14 @@
  <app-user-managment></app-user-managment>
+
+<div class="container">
 <div class="nav">
    <div class="navText"> New Contact</div>
 </div>
-<div class="container">
    <form #editContactForm="ngForm" (ngSubmit)="updateContact()">
    <div class="details">Profile Details
-      <button [disabled]="editContactForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
-      <img src="assets/check-square.svg" width="25" height="25" />
+      <button [disabled]="editContactForm.form.invalid" type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right">
+      <img src="assets/check2.svg" width="25" height="25" />
       </button>
    </div>
    <hr/>
@@ -14,19 +16,19 @@
       <div class="col">
          <div class="form-group">
             <span class = "heading"><label for="firstName">First Name:</label></span>
-            <input required type="text" class="form-control" id="firstName" value={{contact.firstName}}  name="firstName" [(ngModel)]="contact.firstName">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="firstName" value={{contact.firstName}}  name="firstName" [(ngModel)]="contact.firstName">
          </div>
       </div>
       <div class="col">
          <div class="form-group">
             <span class = "heading"><label for="lastName">Last Name:</label></span>
-            <input required type="text" class="form-control" id="lastName" value={{contact.lastName}}  name="lastName" [(ngModel)]="contact.lastName">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="lastName" value={{contact.lastName}}  name="lastName" [(ngModel)]="contact.lastName">
          </div>
       </div>
    </div>
    <div class="form-group">
       <span class = "heading"><label for="title">Title:</label></span>
-      <input required type="text" class="form-control" id="title" value={{contact.title}}  name="title" [(ngModel)]="contact.title">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="title" value={{contact.title}}  name="title" [(ngModel)]="contact.title">
    </div>
    <div class="form-row">
       <div class="col">
@@ -35,7 +37,7 @@
       </div>
       <div class="col">
          <span class = "heading"><label for="phone">Contact Number:</label></span>
-         <input required type="text" class="form-control" id="phone" value={{contact.phone}}   name="phone" [(ngModel)]="contact.phone">
+         <input class="form-control input-sm" required type="text"  class="form-control" id="phone" value={{contact.phone}}   name="phone" [(ngModel)]="contact.phone">
       </div>
    </div>
    <br/>
@@ -68,11 +70,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="street1">street 1:</label></span>
-            <input required type="text" class="form-control" id="street1" value={{contact.address.street1}} name="street1" [(ngModel)]="contact.address.street1">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="street1" value={{contact.address.street1}} name="street1" [(ngModel)]="contact.address.street1">
          </div>
          <div class="col">
             <span class = "heading"><label for="street2">street 2:</label></span>
-            <input required type="text" class="form-control" id="street2" value={{contact.address.street2}} name="street2" [(ngModel)]="contact.address.street2">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="street2" value={{contact.address.street2}} name="street2" [(ngModel)]="contact.address.street2">
          </div>
       </div>
    </div>
@@ -80,11 +82,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="city">City:</label></span>
-            <input required type="text" class="form-control" id="city" value={{contact.address.city}} name="city" [(ngModel)]="contact.address.city">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="city" value={{contact.address.city}} name="city" [(ngModel)]="contact.address.city">
          </div>
          <div class="col">
             <span class = "heading"><label for="zip">Zip Code:</label></span>
-            <input required type="text" class="form-control" id="zip"  value={{contact.address.zip}} name="zip" [(ngModel)]="contact.address.zip">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="zip"  value={{contact.address.zip}} name="zip" [(ngModel)]="contact.address.zip">
          </div>
       </div>
    </div>
@@ -92,17 +94,18 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="state">State:</label></span>
-            <input required type="text" class="form-control" id="state" value={{contact.address.state}}  name="state" [(ngModel)]="contact.address.state">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="state" value={{contact.address.state}}  name="state" [(ngModel)]="contact.address.state">
          </div>
          <div class="col">
             <span class = "heading"><label for="country">Country:</label></span>
-            <input required type="text" class="form-control" id="country" value={{contact.address.country}} name="country" [(ngModel)]="contact.address.country">
+            <input class="form-control input-sm" required type="text"  class="form-control" id="country" value={{contact.address.country}} name="country" [(ngModel)]="contact.address.country">
          </div>
       </div>
    </div>
    <hr>
-   <button [disabled]="editContactForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
-   <img src="assets/check-square.svg" width="25" height="25" />
+   <button [disabled]="editContactForm.form.invalid" type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right">
+   <img src="assets/check2.svg" width="25" height="25" />
    </button>
    </form>
    <br/><br/><br/>

@@ -10,34 +10,38 @@ import { UserAccount } from '../model/account';
 export class AccountServiceService {
   constructor(private _http : HttpClient) { }
 
-  public viewUserAccounts():Observable<any>{
-    return this._http.get<any>("http://localhost:9090/Accounts/"+localStorage.getItem('currentUserID'));
+  public viewPaginatedAccounts(n: any):Observable<any>{
+    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/Accounts/"+ n);
+  }
+
+  public viewAllAccounts():Observable<any>{
+    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/Accounts");
   }
 
   public addAccountFromRemote(account: UserAccount):Observable<any>{
-    return this._http.post<any>("http://localhost:9090/addAccount/"+localStorage.getItem('currentUserID'),account)
+    return this._http.post<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/addAccount/"+account.owner.userID,account)
   }
 
   public viewAccount():Observable<any>{
-    return this._http.get<any>("http://localhost:9090/viewAccount/"+localStorage.getItem('currentAccountID'));
+    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/viewAccount/"+localStorage.getItem('currentAccountID'));
   }
 
   public editAccountFromRemote(account: UserAccount):Observable<any>{
-    return this._http.put<any>("http://localhost:9090/"+localStorage.getItem('currentUserID')+"/editAccount/"+localStorage.getItem('currentAccountID'), account);
+    return this._http.put<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/"+account.owner.userID+"/editAccount/"+localStorage.getItem('currentAccountID'), account);
   }
 
   public deleteAccount():Observable<any>{
     console.log("deleted");
-    return this._http.delete<any>("http://localhost:9090/deleteAccount/"+localStorage.getItem('currentAccountID'));
+    return this._http.delete<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/deleteAccount/"+localStorage.getItem('currentAccountID'));
   }
 
   public cloneAccountFromRemote(account: UserAccount):Observable<any>{
-    return this._http.post<any>("http://localhost:9090/cloneAccount/"+localStorage.getItem('currentUserID'),account)
+    return this._http.post<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/cloneAccount/"+account.owner.userID,account)
   }
 
   public getAccountProteinTypes(ID:string):Observable<any>{
     console.log("called here");
-    console.log("http://localhost:9090/viewAccount/"+localStorage.getItem('currentAccountID')+"/ProteinTypes");
-    return this._http.get<any>("http://localhost:9090/viewAccount/"+ID+"/ProteinTypes");
+    console.log("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/viewAccount/"+localStorage.getItem('currentAccountID')+"/ProteinTypes");
+    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/viewAccount/"+ID+"/ProteinTypes");
   }
 }

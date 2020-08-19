@@ -4,6 +4,9 @@ import { User } from '../model/user';
 import { UserAccount } from '../model/account';
 import { AccountServiceService } from '../service/account-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from '../service/product.service';
+import { ProteinService } from '../service/protein.service';
+import { RegistrationService } from '../service/registration.service';
 
 @Component({
   selector: 'app-edit-account',
@@ -21,11 +24,13 @@ export class EditAccountComponent implements OnInit {
   selectedProducts: string[] = [];
   selectedBusiness: string[] = [];
   selectedProteins: string[] = [];
+  selectedUser: any;
 
   accountTypes:Array<any>;
   statusTypes:Array<any>;
   businessTypes:Array<any>;
   proteinTypes:Array<any>;
+  usersList:Array<any>;
   productList: string[] = [];
   beefList: string[] = [];
   seafoodList: string[] = [];
@@ -33,41 +38,92 @@ export class EditAccountComponent implements OnInit {
   temp:Array<any>;
   temp2:Array<any>;
   flag=true;
-  
-  constructor(private _service:AccountServiceService, private _router:Router, private _activatedRoute:ActivatedRoute) { 
+ 
+  constructor(private regService:RegistrationService, private productservice:ProductService, private proteinservice:ProteinService, private _service:AccountServiceService, private _router:Router, private _activatedRoute:ActivatedRoute) { 
     this.accountTypes = ['Customer','Vendor']
     this.statusTypes = ['Active','Inactive']
     this.businessTypes=['Broker','Caterer','Cold Storage','Distributor','Freight','Packer','Processor','Rancher','Retailer','Trader', 'Wholesaler']
-    this.temp=(JSON.parse(localStorage.getItem("products")));
-
-    for(let result of this.temp){
-      this.productList.push(result.productName);
-    }
-
-    for(let a of JSON.parse(localStorage.getItem("Seafood")))
-      this.seafoodList.push(a.proteinName);
-    for(let a of JSON.parse(localStorage.getItem("Poultary")))
-      this.poultryList.push(a.proteinName);
-    for(let a of JSON.parse(localStorage.getItem("Beef")))
-      this.beefList.push(a.proteinName);
+    this.loadProteinAndProduct();
   }
 
+  
   ngOnInit(): void {
+    this.loadUsers();
+
     this._service.viewAccount().subscribe(
       data=>{
       this.account=data;
+      if(this.account.businessType!=null){
       var arr=this.account.businessType.split(',')
       this.selectedBusiness=arr;
+      this.selectedUser=this.account.owner.userID;
+
+      }
+      if(this.account.productType!=null){
       var arr2=this.account.productType.split(',')
       this.selectedProducts=arr2;
+      }
+      if(this.account.proteinType!=null){
       var arr3=this.account.proteinType.split(',')
       this.selectedProteins=arr3;
+      }
+
+      if( this.selectedBusiness==null){
+        console.log(this.selectedBusiness);
+        this.selectedBusiness=[" "];
+        console.log(this.selectedBusiness);
+      }
+      if( this.selectedProducts==null){
+        console.log(this.selectedProducts);
+        this.selectedProducts=[" "];
+        console.log(this.selectedProducts);
+      }
+      if( this.selectedProteins==null){
+        console.log(this.selectedProteins);
+        this.selectedProteins=[" "];
+        console.log(this.selectedProteins);
+      }
     },
     error=>console.log("error")
     );
   }
  
-  
+  loadProteinAndProduct()
+  {
+    this.productservice.loadAllProducts().subscribe(
+      data=>{
+        for(let a of data)
+          this.productList.push(a.productName);
+        console.log(this.productList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Beef").subscribe(
+      data=>{
+        for(let a of data)
+          this.beefList.push(a);
+        console.log(this.beefList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Poultry").subscribe(
+      data=>{
+        for(let a of data)
+          this.poultryList.push(a);
+        console.log(this.poultryList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Seafood").subscribe(
+      data=>{
+        for(let a of data)
+          this.seafoodList.push(a);
+        console.log(this.seafoodList);
+      }
+    )
+
+
+  }
   contains() {
     if(this.selectedBusinessString.includes("Broker")||
       this.selectedBusinessString.includes("Distributor")||
@@ -81,11 +137,10 @@ export class EditAccountComponent implements OnInit {
 
   isSelected(name) {
     if(this.selectedProductsString.includes(name)){
-      console.log("true");
+
       return true;
     }
     else{
-      console.log("false");
         return false;
       }
   }
@@ -98,7 +153,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   get selectedProteinsString () {
-    console.log(this.account.proteinType=this.selectedProteins.toString());
+
     this.account.proteinType=this.selectedProteins.toString();
     return this.selectedProteins.toString();
   }
@@ -110,7 +165,6 @@ export class EditAccountComponent implements OnInit {
 
   get selectedBusinessString () {
     this.account.businessType=this.selectedBusiness.toString();
-    console.log(this.selectedBusiness);
     return this.selectedBusiness.toString();
   }
 
@@ -131,15 +185,33 @@ export class EditAccountComponent implements OnInit {
     (event) ?
       this.selectedProteins.push(product) :
       this.selectedProteins = this.selectedProteins.filter(d => d !== product);
-      console.log(this.account.proteinType);
-      console.log(this.selectedProteins);
+  }
+
+  loadUsers(){
+    this.regService.getAllUsers().subscribe(
+      data=>{
+        this.usersList=data;
+        for(let a of this.usersList)
+          console.log(a.userID);
+        console.log("users");
+        console.log(this.usersList);
+      },
+      error=>{
+        console.log("error")
+      }
+    )
   }
 
   editAccount(){
+    this.account.owner.userID=this.selectedUser;
+    console.log(this.selectedUser);
+    console.log("sending ths id to edit");
+    console.log(this.account.owner.userID);
     this._service.editAccountFromRemote(this.account).subscribe(
       data=>{
         console.log("response POSTED");
-        this._router.navigate(['/userAccounts']);
+        localStorage.setItem("flag",'1');
+        this._router.navigate(['/accounts']);
       },
       error=>{
         console.log("error")

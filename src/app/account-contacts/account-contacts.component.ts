@@ -9,17 +9,23 @@ import { Router } from '@angular/router';
 })
 export class AccountContactsComponent implements OnInit {
 
-  constructor(private _service:ContactService, private _router:Router) { }
+  constructor(private _service:ContactService, private _router:Router) {
+    if(localStorage.getItem("flag")=='1'){
+      window.location.reload();
+      localStorage.setItem("flag",'0');
+    }
+   }
 
+  accountName:String=localStorage.getItem("currentAccountName");
   contacts:Array<any>;
 
   createContact(){
-    this._router.navigate(['/userAccounts/viewAccount/'+ localStorage.getItem("currentAccountID")+'/accountContacts/addContact']);
+    this._router.navigate(['/accounts/viewAccount/'+ localStorage.getItem("currentAccountID")+'/accountContacts/addContact']);
   }
 
   viewContact(ID:string){
     localStorage.setItem('currentContactID',ID);
-    this._router.navigate(['/userAccounts/viewAccount/'+ localStorage.getItem("currentAccountID")+'/accountContacts/viewContact', ID]);
+    this._router.navigate(['/accounts/viewAccount/'+ localStorage.getItem("currentAccountID")+'/accountContacts/viewContact', ID]);
   }
 
   deleteContact(ID:string){
@@ -35,7 +41,7 @@ export class AccountContactsComponent implements OnInit {
   editContact(ID:string){
     console.log("edit contact called");
     localStorage.setItem('currentContactID',ID);
-    this._router.navigate(['/userAccounts/viewAccount/'+localStorage.getItem("currentAccountID")+'/accountContacts/editContact',  ID]);
+    this._router.navigate(['/accounts/viewAccount/'+localStorage.getItem("currentAccountID")+'/accountContacts/editContact',  ID]);
   }
  
   

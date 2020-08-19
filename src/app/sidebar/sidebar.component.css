@@ -1,0 +1,43 @@
+#mySidenav span {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 8px;
+    width: 115px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    font-size: medium;
+    background-color: #053868;
+}
+
+#mySidenav span:hover {
+    left: 0;
+    background-color: #2e8171;
+}
+
+button {
+    border: none !important;
+    background-color: none !important;
+}
+
+#users {
+    top: 460px;
+    float: left;
+}
+
+img {
+    float: right;
+    margin: 0px 2px;
+}
+
+#accounts {
+    top: 320px;
+    float: left;
+}
+
+#contacts {
+    top: 390px;
+    float: left;
+}

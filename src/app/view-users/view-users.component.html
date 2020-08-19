@@ -1,0 +1,45 @@
+<app-user-managment></app-user-managment>
+<div class="container">
+
+  <button type="button" style=" font-size: medium; color: #053868; background-color:transparent; border-color:transparent; float:left;">
+     <img src="assets/file-person-b.svg" width="20" height="20"/> View Users
+</button>
+
+   <button type="button" style="background-color:transparent; color:#2e8171; border-color:transparent; float:right;" matTooltip="Create User" (click)="registerUser()">
+   New User&nbsp;<img src="assets/plus.svg" width="25" height="25"/>
+   </button>
+ 
+
+   <br/>
+   <table class="table table-hover">
+   <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <!--<th scope="col">Actions</th>-->
+      </tr>
+    </thead>
+
+    <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.address.street1}}, {{user.address.street2}}, {{user.address.city}}, {{user.address.state}}, {{user.address.country}}</td>
+            <!--<td>
+              <button type="button" style="background-color:transparent; border-color:transparent; border-radius: 8px;" (click)="editUser(user.userID)"> 
+                  <img src="assets/pencil-g.svg" width="15" height="15" />
+              </button>
+             </td>-->
+          </tr>
+    </tbody>
+  </table>
+        <div *ngIf="users.length===0">
+        <div class=containerc>
+          <p>Account does not have any users. Press <img src="assets/plus.svg" width="15" height="15" /> icon to create a new user.
+        </div>
+        </div>
+</div>
+<app-sidebar></app-sidebar>

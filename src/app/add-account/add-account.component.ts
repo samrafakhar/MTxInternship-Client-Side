@@ -5,6 +5,10 @@ import { AccountServiceService } from '../service/account-service.service';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { EsAccountService } from '../service/es-account.service';
+import { ProductService } from '../service/product.service';
+import { ProteinService } from '../service/protein.service';
+import { RegistrationService } from '../service/registration.service';
 
 @Component({
   selector: 'app-add-account',
@@ -15,6 +19,7 @@ export class AddAccountComponent implements OnInit {
   selectedProducts: string[] = [];
   selectedProteins: string[] = [];
   selectedBusiness: string[] = [];
+  selectedUser: any;
 
   shippingAddress=new Address();
   billingAddress=new Address();
@@ -31,31 +36,22 @@ export class AddAccountComponent implements OnInit {
   beefList: string[] = [];
   seafoodList: string[] = [];
   poultryList: string[] = [];
+  usersList: string[] = [];
 
-  temp:Array<any>;
+  temp:Array<String>;
 
   dropdownSettings:IDropdownSettings;
 
-  constructor(private _service:AccountServiceService, private _router:Router) {
+  constructor(private regService:RegistrationService, private productservice:ProductService, private proteinservice:ProteinService, private ESservice:EsAccountService, private _service:AccountServiceService, private _router:Router) {
     this.accountTypes = ['Customer','Vendor']
     this.statusTypes = ['Active','Inactive']
     this.businessTypes=['Broker','Caterer','Cold Storage','Distributor','Freight','Packer','Processor','Rancher','Retailer','Trader', 'Wholesaler']
-
-    this.temp=(JSON.parse(localStorage.getItem("products")));
-
-    for(let result of this.temp){
-      this.productList.push(result.productName);
-    }
-    
-    for(let a of JSON.parse(localStorage.getItem("Seafood")))
-      this.seafoodList.push(a.proteinName);
-    for(let a of JSON.parse(localStorage.getItem("Poultary")))
-      this.poultryList.push(a.proteinName);
-    for(let a of JSON.parse(localStorage.getItem("Beef")))
-      this.beefList.push(a.proteinName);
+    this.loadProteinAndProduct();
   }
 
   ngOnInit(): void {
+  
+    this.loadUsers();
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -67,6 +63,42 @@ export class AddAccountComponent implements OnInit {
     };
   }
 
+  loadProteinAndProduct()
+  {
+    this.productservice.loadAllProducts().subscribe(
+      data=>{
+        for(let a of data)
+          this.productList.push(a.productName);
+        console.log(this.productList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Beef").subscribe(
+      data=>{
+        for(let a of data)
+          this.beefList.push(a);
+        console.log(this.beefList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Poultry").subscribe(
+      data=>{
+        for(let a of data)
+          this.poultryList.push(a);
+        console.log(this.poultryList);
+      }
+    )
+
+    this.proteinservice.loadAllProteinsByProduct("Seafood").subscribe(
+      data=>{
+        for(let a of data)
+          this.seafoodList.push(a);
+        console.log(this.seafoodList);
+      }
+    )
+
+
+  }
   contains() {
     if(this.selectedBusinessString.includes("Broker")||
       this.selectedBusinessString.includes("Distributor")||
@@ -135,14 +167,49 @@ export class AddAccountComponent implements OnInit {
   }
 
   addAccount(){
+    this.account.owner.userID=this.selectedUser;
+    console.log(this.selectedUser);
+    console.log(this.account.owner.userID);
     this._service.addAccountFromRemote(this.account).subscribe(
-      ()=>{
+      data=>{
         console.log("response received");
-        this._router.navigate(['/userAccounts']);
+        localStorage.setItem("flag",'1');
+        this._router.navigate(["/accounts"]);
       },
-      ()=>{
+      error=>{
         console.log("error")
         this.msg="error";
+      }
+    )
+  }
+
+  updateOwner(id){
+
+    console.log(id);
+    this.account.owner.userID=id;
+    this.selectedUser=id;
+    console.log(this.selectedUser);
+    console.log(this.account.owner.userID);
+  }
+
+  filtered :any;
+
+  /*onOptionsSelected() {
+    console.log(this.selectedUser); 
+    this.filtered = this.usersList.filter(t=>t.userID ==this.selectedUser);
+
+  }*/
+
+
+  loadUsers(){
+    this.regService.getAllUsers().subscribe(
+      data=>{
+        this.usersList=data;
+        console.log("users");
+        console.log(this.usersList);
+      },
+      error=>{
+        console.log("error")
       }
     )
   }

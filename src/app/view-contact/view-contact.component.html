@@ -1,14 +1,15 @@
-<div class="logo"><img src="assets/logo.png" />
-<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "logout()"><img src="assets/person-circle.svg" width="30" height="30" /></button>
-</div>
+ <app-user-managment></app-user-managment>
 
+
+
+
+<div class="container">
 <div class="nav">
 <div class="navText">Account Details</div>
 </div>
-
-<div class="container">
 <div class="details">Contact Details
-<button type="button" style="background-color:transparent; border-color:transparent;" class="float-sm-right" (click) = "editContact(contact.contactID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
+<button type="button" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right" (click) = "editContact(contact.contactID)"><img src="assets/pencil-g.svg" width="20" height="20" /></button>
 </div>
 <hr/>
 <div class="form-row"><div class="col-6 col-sm-3"> First Name:</div><div class="col-6 col-sm-3">{{contact.firstName}}</div></div>
@@ -16,6 +17,7 @@
 <div class="form-row"><div class="col-6 col-sm-3"> Title:</div><div class="col-6 col-sm-3">{{contact.title}}</div></div>
 <div class="form-row"><div class="col-6 col-sm-3"> Email</div><div class="col-6 col-sm-3">{{contact.email}}</div></div>
 <div class="form-row"><div class="col-6 col-sm-3"> Contact Number:</div><div class="col-6 col-sm-3">{{contact.phone}}</div></div>
+<div class="form-row"><div class="col-6 col-sm-3"> Fax:</div><div class="col-6 col-sm-3">{{contact.fax}}</div></div>
 <div class="form-row"><div class="col-6 col-sm-3"> Functional Area:</div><div class="col-6 col-sm-3">{{contact.functionalArea}}</div></div>
 <div *ngIf="contact.functionalArea.includes('Sales') || contact.functionalArea.includes('Buyer')">
 <div class="form-row"><div class="col-6 col-sm-3"> Buys/Sells For:</div><div class="col-6 col-sm-3">{{contact.tradesFor}}</div></div>
@@ -30,3 +32,4 @@
 <div class="form-row"><div class="col-6 col-sm-3"> Zip Code:</div><div class="col-6 col-sm-3">{{contact.address.zip}}</div></div>
 <br/>
 </div>
+<app-sidebar></app-sidebar>

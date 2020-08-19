@@ -94,7 +94,8 @@ export class AddContactComponent implements OnInit {
     this._service.addContactFromRemote(this.contact).subscribe(
       data=>{
         console.log("response received");
-        this._router.navigate(['/userAccounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
+        localStorage.setItem("flag",'1');
+        this._router.navigate(['/accounts/viewAccount/'+localStorage.getItem('currentAccountID')+'/accountContacts']);
       },
       error=>{
         console.log("error")

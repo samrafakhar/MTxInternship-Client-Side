@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private _http : HttpClient) { }
 
   public loadAllProducts():Observable<any>{
-    return this._http.get<any>("http://localhost:9090/Products");
+    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/Products");
   }
 
 }

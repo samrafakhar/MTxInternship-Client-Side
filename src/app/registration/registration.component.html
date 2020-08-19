@@ -1,15 +1,13 @@
-<div class="logo"><img src="assets/logo.png" />
-</div>
-
-<div class="nav">
-<div class="navText">Sign Up</div>
-</div>
+<app-user-managment></app-user-managment>
 
 <div class="container">
+<div class="nav">
+   <div class="navText">New User</div>
+</div>
 <form #registeration="ngForm" (ngSubmit)="registerUser()">
  <div class="details">Profile Details
-      <button [disabled]="registeration.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
-    <img src="assets/check-square.svg" width="25" height="25" />
+      <button [disabled]="registeration.form.invalid" type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;" class="float-sm-right">
+    &nbsp;&nbsp;<img src="assets/check2.svg" width="25" height="25" />
     </button>
   </div><hr/>
   <small class="text-danger">{{msg}}</small>
@@ -18,14 +16,14 @@
     <div class="col">
         <div class="form-group">
         <label for="firstName">First Name:</label>
-      <input required type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName">
     
         </div>
     </div>
     <div class="col">
           <div class="form-group">
             <label for="lastName">Last Name:</label>
-      <input required type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" >
+      <input class="form-control input-sm" required type="text"  class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" >
    
           </div>
     </div>
@@ -47,26 +45,26 @@
     <div class="col">
           <div class="form-group">
             <label for="phone">Contact Number:</label>
-      <input required type="text" class="form-control" id="phone"  name="phone" [(ngModel)]="user.phone">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="phone"  name="phone" [(ngModel)]="user.phone">
     
           </div>
     </div>
   </div>
 
 
-   <br/><div class="details">Address Details</div><hr/>
+   <div class="details">Address Details</div><hr/>
       <div class="form-row">
     <div class="col">
         <div class="form-group">
         <label for="street1">street 1:</label>
-      <input required type="text" class="form-control" id="street1"  name="street1" [(ngModel)]="user.address.street1">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="street1"  name="street1" [(ngModel)]="user.address.street1">
   
         </div>
     </div>
     <div class="col">
           <div class="form-group">
               <label for="street2">street 2:</label>
-      <input required type="text" class="form-control" id="street2" name="street2" [(ngModel)]="user.address.street2">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="street2" name="street2" [(ngModel)]="user.address.street2">
    
           </div>
     </div>
@@ -76,14 +74,14 @@
     <div class="col">
         <div class="form-group">
      <label for="city">City:</label>
-      <input required type="text" class="form-control" id="city"  name="city" [(ngModel)]="user.address.city">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="city"  name="city" [(ngModel)]="user.address.city">
  
         </div>
     </div>
     <div class="col">
           <div class="form-group">
              <label for="zip">Zip Code:</label>
-      <input required type="text" class="form-control" id="zip"  name="zip" [(ngModel)]="user.address.zip">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="zip"  name="zip" [(ngModel)]="user.address.zip">
 
           </div>
     </div>
@@ -93,23 +91,24 @@
     <div class="col">
         <div class="form-group">
        <label for="state">State:</label>
-      <input required type="text" class="form-control" id="state" placeholder="State" name="state" [(ngModel)]="user.address.state">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="state" placeholder="State" name="state" [(ngModel)]="user.address.state">
     
         </div>
     </div>
     <div class="col">
           <div class="form-group">
            <label for="country">Country:</label>
-      <input required type="text" class="form-control" id="country" placeholder="Country" name="country" [(ngModel)]="user.address.country">
+      <input class="form-control input-sm" required type="text"  class="form-control" id="country" placeholder="Country" name="country" [(ngModel)]="user.address.country">
    
           </div>
     </div>
   </div>
 
 <hr>
-    <button [disabled]="registeration.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
-    <img src="assets/check-square.svg" width="25" height="25" />
+    <button [disabled]="registeration.form.invalid" type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right">
+    <img src="assets/check2.svg" width="25" height="25" />
     </button>
   </form>
-  <br/><br/><br/>
+  <br/><br/>
 </div>

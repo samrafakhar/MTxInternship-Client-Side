@@ -1,19 +1,23 @@
+
 <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
 <app-user-managment></app-user-managment>
+
+<div class="container">
 <div class="nav">
    <div class="navText">Add New Account</div>
 </div>
-<div class="container">
+
    <form #addAccountForm="ngForm" (ngSubmit)="addAccount()">
    <div class="details">Business Profile
-      <button [disabled]="addAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right">
-      <img src="assets/check-circle-g.svg" width="25" height="25" />
+      <button [disabled]="addAccountForm.form.invalid" type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right">
+      <img src="assets/check2.svg" width="25" height="25" />
       </button>
    </div>
    <hr/>
    <div class="form-group">
       <span class = "heading"><label for="name">Name</label></span>
-      <input required type="text" class="form-control input-sm" id="name"  name="name" [(ngModel)]="account.name">
+      <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="name"  name="name" [(ngModel)]="account.name">
    </div>
    <div class="form-group">
       <div class="row">
@@ -39,19 +43,37 @@
          </div>
       </div>
    </div>
+
+
    <div class="form-group">
-      <span class = "heading"><label for="website">Website</label></span>
-      <input required type="text" class="form-control input-sm" id="website"  name="website" [(ngModel)]="account.website">
-   </div>
+      <div class="row">
+         <div class="col">
+             <span class = "heading"><label for="website">Website</label></span>
+             <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="website"  name="website" [(ngModel)]="account.website">
+         </div>
+         <div class="col">
+            <span class = "heading"><label for="phone">Owner:</label></span>
+      
+            <select class="form-control" [(ngModel)]="selectedUser" name="selectedUser" placeholder="select" >
+               <option *ngFor="let user of usersList" [ngValue]="user.userID">{{user.firstName}} {{user.lastName}}</option>
+            </select>
+         <div>
+      </div>
+   </div></div></div>
+
+
+
+
+
    <div class="form-group">
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="fax">Fax:</label></span>
-            <input required type="text" class="form-control input-sm" id="fax" name="fax" [(ngModel)]="account.fax">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="fax" name="fax" [(ngModel)]="account.fax">
          </div>
          <div class="col">
             <span class = "heading"><label for="phone">Contact Number:</label></span>
-            <input required type="text" class="form-control input-sm" id="phone" name="phone" [(ngModel)]="account.phone">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="phone" name="phone" [(ngModel)]="account.phone">
          </div>
       </div>
    </div>
@@ -101,7 +123,7 @@
             <textarea style="display:none;" name="seafood" [ngModel]="selectedProteinsString" [(ngModel)]="account.proteinType"></textarea>
             <br/><br>
           </div>
-          <div *ngIf="isSelected('Poultary')">
+          <div *ngIf="isSelected('Poultry')">
             <span class = "Details" style="font-weight: 500; float:left">Poultry</span> <br/>
             <ng-container *ngFor="let poultry of poultryList">
                <div style="width:25%;float: left; white-space: nowrap; overflow:hidden !important; text-overflow: ellipsis;">
@@ -113,7 +135,7 @@
           </div>
       </div>
    </div>
-          <!--<input disabled required type="text" class="form-control input-sm" id="proteinType" name="proteinType" [(ngModel)]="account.proteinType">
+          <!--<input disabled   type="text" class="form-control input-sm" id="proteinType" name="proteinType" [(ngModel)]="account.proteinType">
             <ng-multiselect-dropdown
                 [placeholder]="'custom placeholder'"
                 [data]="proteinList"
@@ -129,11 +151,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="street1">Street 1:</label></span>
-            <input required type="text" class="form-control input-sm" id="street1" name="street1" [(ngModel)]="account.shippingAddress.street1">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="street1" name="street1" [(ngModel)]="account.shippingAddress.street1">
          </div>
          <div class="col">
             <span class = "heading"><label for="street2">Street 2:</label></span>
-            <input required type="text" class="form-control input-sm" id="street2"  name="street2" [(ngModel)]="account.shippingAddress.street2">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="street2"  name="street2" [(ngModel)]="account.shippingAddress.street2">
          </div>
       </div>
    </div>
@@ -141,11 +163,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="city">City:</label></span>
-            <input required type="text" class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.shippingAddress.city">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.shippingAddress.city">
          </div>
          <div class="col">
             <span class = "heading"><label for="zip">Zip Code:</label></span>
-            <input required type="text" class="form-control input-sm" id="zip" name="zip" [(ngModel)]="account.shippingAddress.zip">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="zip" name="zip" [(ngModel)]="account.shippingAddress.zip">
          </div>
       </div>
    </div>
@@ -153,11 +175,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="state">State:</label></span>
-            <input required type="text" class="form-control input-sm" id="state" name="state" [(ngModel)]="account.shippingAddress.state">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="state" name="state" [(ngModel)]="account.shippingAddress.state">
          </div>
          <div class="col">
             <span class = "heading"><label for="country">Country:</label></span>
-            <input required type="text" class="form-control input-sm" id="country" name="country" [(ngModel)]="account.shippingAddress.country">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="country" name="country" [(ngModel)]="account.shippingAddress.country">
          </div>
       </div>
    </div>
@@ -167,11 +189,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="street1">Street 1:</label></span>
-            <input required type="text" class="form-control input-sm" id="street1"  name="street1" [(ngModel)]="account.billingAddress.street1">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="street1"  name="street1" [(ngModel)]="account.billingAddress.street1">
          </div>
          <div class="col">
             <span class = "heading"><label for="street2">Street 2:</label></span>
-            <input required type="text" class="form-control input-sm" id="street2" name="street2" [(ngModel)]="account.billingAddress.street2">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="street2" name="street2" [(ngModel)]="account.billingAddress.street2">
          </div>
       </div>
    </div>
@@ -179,11 +201,11 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="city">City:</label></span>
-            <input required type="text" class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.billingAddress.city">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="city"  name="city" [(ngModel)]="account.billingAddress.city">
          </div>
          <div class="col">
             <span class = "heading"><label for="zip">Zip Code:</label></span>
-            <input required type="text" class="form-control input-sm" id="zip"  name="zip" [(ngModel)]="account.billingAddress.zip">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="zip"  name="zip" [(ngModel)]="account.billingAddress.zip">
          </div>
       </div>
    </div>
@@ -191,19 +213,22 @@
       <div class="row">
          <div class="col">
             <span class = "heading"><label for="state">State:</label></span>
-            <input required type="text" class="form-control input-sm" id="state"  name="state" [(ngModel)]="account.billingAddress.state">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="state"  name="state" [(ngModel)]="account.billingAddress.state">
          </div>
          <div class="col">
             <span class = "heading"><label for="country">Country:</label></span>
-            <input required type="text" class="form-control input-sm" id="country"  name="country" [(ngModel)]="account.billingAddress.country">
+            <input class="form-control input-sm"   type="text"  class="form-control input-sm" id="country"  name="country" [(ngModel)]="account.billingAddress.country">
          </div>
       </div>
    </div>
    <hr>
    <small class="text-danger">{{msg}}</small>
-   <button [disabled]="addAccountForm.form.invalid" type="submit" style="background-color:transparent; border-color:transparent;" class="float-sm-right" ejs-button>
-   <img src="assets/check-circle-g.svg" width="25" height="25" />
+   <button type="submit" style="background-color:transparent; color: #2e8171; border-color:transparent;"
+ class="float-sm-right" ejs-button>
+   <img src="assets/check2.svg" width="25" height="25" />
    </button>
    </form>
    <br/><br/><br/>
 </div>
+
+<!-- [disabled]="addAccountForm.form.invalid" -->

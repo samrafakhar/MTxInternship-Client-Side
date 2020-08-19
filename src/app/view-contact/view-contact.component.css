@@ -1,19 +1,23 @@
+* {
+    font-family: 'Quicksand';
+    font-size: 13px;
+}
+
 .nav {
     background: #053868;
-    margin: 30px 0px;
+    margin: 8px 0px 15px 0px;
 }
 
 .navText {
     color: white;
     float: center;
-    font-size: large;
+    font-size: medium;
     padding: 5px;
-    margin-left: 200px;
 }
 
 .details {
-    font-size: large;
-    color: #389583;
+    font-size: medium;
+    color: #2e8171;
 }
 
 .logo {
@@ -21,7 +25,7 @@
 }
 
 .heading {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .logout {
