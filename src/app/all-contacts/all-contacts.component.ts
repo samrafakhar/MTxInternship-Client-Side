@@ -7,7 +7,7 @@ import { Address } from '../model/address';
 import { User } from '../model/user';
 import { UserAccount } from '../model/account';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-const nisPackage = require('D:/nodejs/MTxInternship-Frontend/package.json');
+const nisPackage = require('package.json');
 
 @Component({
   selector: 'app-all-contacts',
