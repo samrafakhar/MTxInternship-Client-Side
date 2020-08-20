@@ -2,7 +2,7 @@ version: 0.2
 
 env:
     variables:
-        S3_BUCKET: "http://mtxinternshiptestbucket.s3-website-us-east-1.amazonaws.com"
+        S3_BUCKET: "mtxinternshiptestbucket"
 APP_NAME: "mtxinternship"
 BUILD_ENV : "prod"
 
