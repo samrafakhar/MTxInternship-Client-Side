@@ -10,10 +10,10 @@ export class SearchService {
   constructor(private _http : HttpClient) { }
 
   public searchAccount(name:String, n:Number):Observable<any>{
-    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/accounts/"+n+"/name/"+name);
+    return this._http.get<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/accounts/"+n+"/name/"+name);
   }
   public searchContacts(name:String, n:Number):Observable<any>{
-    console.log(("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/contacts/"+n+"/name/"+name));
-    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/contacts/"+n+"/name/"+name);
+    console.log(("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/contacts/"+n+"/name/"+name));
+    return this._http.get<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/contacts/"+n+"/name/"+name);
   }
 }

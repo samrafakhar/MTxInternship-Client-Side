@@ -46,6 +46,12 @@ export class AccountContactsComponent implements OnInit {
  
   
   ngOnInit(): void {
+ 
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
+
                     this._service.viewAccountContacts().subscribe(
                       data=>{console.log("response received");
                       this.contacts=data;

@@ -7,7 +7,7 @@ import { Address } from '../model/address';
 import { User } from '../model/user';
 import { UserAccount } from '../model/account';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-const nisPackage = require('package.json');
+const nisPackage = require('D:/nodejs/MTxInternship-Frontend/package.json');
 
 @Component({
   selector: 'app-all-contacts',
@@ -139,6 +139,10 @@ export class AllContactsComponent implements OnInit {
  
   
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
 
       this.accountservice.viewAllAccounts().subscribe(
         data=>{

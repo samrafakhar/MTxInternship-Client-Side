@@ -22,6 +22,10 @@ export class ViewAccountComponent implements OnInit {
   account=new UserAccount(this.user,this.shippingAddress,this.billingAddress);
   
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
     console.log("view acc called");
     this._service.viewAccount().subscribe(
       data=>{console.log("response received");

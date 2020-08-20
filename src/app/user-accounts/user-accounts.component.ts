@@ -10,7 +10,7 @@ import { SearchService } from '../service/search.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 //import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
-const nisPackage = require('package.json');
+const nisPackage = require('D:/nodejs/MTxInternship-Frontend/package.json');
 
 @Component({
   selector: 'app-user-accounts',

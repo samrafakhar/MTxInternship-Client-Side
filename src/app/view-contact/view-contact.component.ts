@@ -24,6 +24,10 @@ export class ViewContactComponent implements OnInit {
   constructor(private _service:ContactService, private _router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
     this._service.viewContact().subscribe(
       data=>{console.log("response received");
       this.contact=data;

@@ -43,6 +43,10 @@ export class EditContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
     this.getAccountProteinTypes();
     console.log("fetching for edit contact");
     this._service.viewContact().subscribe(

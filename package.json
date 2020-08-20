@@ -27,6 +27,7 @@
     "@syncfusion/ej2-angular-dropdowns": "^18.2.47",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "localstorage-polyfill": "^1.0.1",
     "ng-multiselect-dropdown": "^0.2.10",
     "ngstorage": "^0.3.11",
     "ngx-infinite-scroll": "^9.0.0",

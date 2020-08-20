@@ -11,6 +11,10 @@ export class SidebarComponent implements OnInit {
   constructor(private _router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
   }
 
   viewUsers(){

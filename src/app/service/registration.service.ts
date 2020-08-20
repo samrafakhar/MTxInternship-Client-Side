@@ -11,18 +11,18 @@ export class RegistrationService {
   constructor(private _http : HttpClient) { }
 
   public loginUserFromRemote(user: User):Observable<any>{
-    return this._http.post<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/login",user)
+    return this._http.post<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/login",user)
   }
 
   public registerUserFromRemote(user: User):Observable<any>{
-    return this._http.post<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/register",user)
+    return this._http.post<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/register",user)
   }
 
   public updateFromRemote(user: User):Observable<any>{
-    return this._http.put<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/updateUser/"+localStorage.getItem('UserID'), user)
+    return this._http.put<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/updateUser/"+localStorage.getItem('UserID'), user)
   }
 
   public getAllUsers():Observable<any>{
-    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/Users")
+    return this._http.get<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/Users")
   }
 }

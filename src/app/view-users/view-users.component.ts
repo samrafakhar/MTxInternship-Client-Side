@@ -20,6 +20,10 @@ export class ViewUsersComponent implements OnInit {
   registerUser(){this._router.navigate(['/users/newUser']);}
 
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
     this._service.getAllUsers().subscribe(
       data=>{console.log("response received");
       this.users=data;

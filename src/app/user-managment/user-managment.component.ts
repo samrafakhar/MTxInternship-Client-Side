@@ -12,6 +12,10 @@ export class UserManagmentComponent implements OnInit {
   constructor(private _service:AccountServiceService, private _router:Router) { }
  
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
   }
   
   logout(){this._router.navigate(['/logout']);}

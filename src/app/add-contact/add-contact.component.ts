@@ -63,6 +63,10 @@ export class AddContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('currentUserID')==null || localStorage.getItem('currentUserID')==undefined)
+    {
+      this._router.navigate(['/login']);
+    }
     this.getAccountProteinTypes();
   }
  

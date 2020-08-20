@@ -10,10 +10,10 @@ export class ProteinService {
   constructor(private _http : HttpClient) { }
 
   public loadAllProteins():Observable<any>{
-    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/Proteins");
+    return this._http.get<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/Proteins");
   }
 
   public loadAllProteinsByProduct(id:string):Observable<any>{
-    return this._http.get<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/ProteinsOfAProduct/"+id);
+    return this._http.get<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/ProteinsOfAProduct/"+id);
   }
 }

@@ -11,6 +11,6 @@ export class EsAccountService {
   constructor(private _http : HttpClient) { }
 
   public indexAccount(account: UserAccount):Observable<any>{
-    return this._http.post<any>("https://ec2-184-73-104-24.compute-1.amazonaws.com:9090/accounts/save",account)
+    return this._http.post<any>("http://ec2-3-83-137-70.compute-1.amazonaws.com:9090/accounts/save",account)
   }
 }
